@@ -7,10 +7,21 @@
 }
 
 
+.open{
+  display: block;
+}
+
+.close{
+  display: none;
+}
 
 .switcharea,.switchtextarea{
   float:left;
   margin: 15px;
+}
+
+.Close_btn {
+  border-radius: 15px;
 }
 
 .switch{

@@ -34,6 +34,7 @@ export default function Textform(props) {
     const uppercase = () => {
         // console.log("Uppercase function is called");
         setText(text.toUpperCase());
+        props.toggle_alert_window("Text Coverted into Uppercase");
     }
     //---Alternative way to converting in uppercase---
     // function uppercase(){
@@ -45,6 +46,7 @@ export default function Textform(props) {
     // Function to convert all text in Lowercase.
     const lowercase = () => {
         setText(text.toLowerCase());
+        props.toggle_alert_window("Text Coverted into Lowercase");
     }
 
     // Function to covert the text into camelcase.
@@ -63,6 +65,7 @@ export default function Textform(props) {
         }
         // joining and assigning to the text variable.
         setText(words.join(" "));
+        props.toggle_alert_window("Text Coverted into CamelCase");
     }
 
     // Function to clear the text area
@@ -78,6 +81,7 @@ export default function Textform(props) {
             }
         )
         setText('');
+        props.toggle_alert_window("Text Cleared");
     }
 
     // Function for enabling the typing feature in the text area.
@@ -98,32 +102,34 @@ export default function Textform(props) {
         )
         setText(mistake);
         recovery_text("");
+        props.toggle_alert_window("Text Recovered");
     }
 
     // Function to change the visibility mode
-    const change_visibility = () => {
-        console.log("change visiblity");
-        if(props.mode=="Dark") {
-            change_mode_css({
-                backgroundColor:"rgb(31, 25, 25)",
-                color:"white"
-            })
-            // change_mode("Enable Light Mode");
-        }
-        else {
-            // change_mode("Enable Dark Mode");
-            change_mode_css({
-                backgroundColor:"white",
-                color:"black"
-            })
-        }
-    }
+    // const change_visibility = () => {
+    //     console.log("change visiblity");
+    //     if(props.mode=="Dark") {
+    //         change_mode_css({
+    //             backgroundColor:"rgb(31, 25, 25)",
+    //             color:"white"
+    //         })
+    //         // change_mode("Enable Light Mode");
+    //     }
+    //     else {
+    //         // change_mode("Enable Dark Mode");
+    //         change_mode_css({
+    //             backgroundColor:"white",
+    //             color:"black"
+    //         })
+    //     }
+    // }
 
     // Function to copy the text area
     const copy_text_area = () => {
         var text = document.getElementById("myBox");
         text.select();
         navigator.clipboard.writeText(text.value);
+        props.toggle_alert_window("Text Copied");
     }
 
     // Text Vairable
@@ -142,7 +148,7 @@ export default function Textform(props) {
                     <div className="mb-3">
                         {/* Text Area of the Application. */}
                         <label htmlFor="myBox" style={style.contents} className="form-label">*Text Area*</label> <br></br>
-                        {console.log(props.mode)}
+                        {/* {console.log(props.mode)} */}
                         <textarea className="form-control" value={text} onChange={onchangefun} style={style.text_area}  id="myBox" rows="8" cols="100" placeholder="Enter your text here"></textarea>
                     </div>
                     {/* Button for uppercase. */}
@@ -154,7 +160,7 @@ export default function Textform(props) {
                     {/* Button to clear text area. */}
                     <button className="bnt" style={style.btn} onClick={clear_text}>Clear text</button>
                     {/* Button to recover last text. */}
-                    <button className="bnt" style={recovery_btn} onClick={recovery_button_fnc}>Recovery text</button>
+                    <button className="btn" style={recovery_btn} onClick={recovery_button_fnc}>Recovery text</button>
                     {/* Button to enable/disable dark mode */}
                     {/* <button className="bnt_change_visiblity" style={style.btn} onClick={change_visibility}>{dark_mode}</button> */}
                     {/* Button to copy text */}
@@ -166,7 +172,7 @@ export default function Textform(props) {
                     <p><strong>{text.split(" ").length} words are used</strong></p>
                     <p>{0.008*(text.split(" ").length-1)} minute requied to read</p>
                     <h3>Preview</h3>    
-                    <p>{text}</p>
+                    <span className="preview_box">{text===""?"Type to Preview":text}</span>
                 </div>
             </div>
         </>

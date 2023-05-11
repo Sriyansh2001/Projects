@@ -10,6 +10,9 @@ export default function Navbar(props) {
         <span className='switcharea'>
           <input type='checkbox' onChange={props.toggle_visiblity_mode} className='switch' id='switch'></input>
         </span>
+        <select>
+          <option></option>
+        </select>
         <span className='list'>
           <a href='#' className='item'>Home</a>
           <a href='#' className='item'>Contact</a>
