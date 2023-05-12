@@ -48,3 +48,7 @@
 .item:hover {
   background-color: rgb(165, 165, 165);
 }
+
+.select_option {
+  margin: 5px;
+}

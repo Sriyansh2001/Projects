@@ -32,7 +32,6 @@ function App() {
   const toggle_visiblity_mode = () => {
     if(visibility_mode==='Dark') {
       change_visibility_mode("Light");
-      console.log("here");
       document.body.style.backgroundColor = "white";
       toggle_alert_window("Light Mode Enabled");
     }
@@ -42,11 +41,16 @@ function App() {
       toggle_alert_window("Dark Mode Enabled");
     }
   }
+  
+  const change_color_to = (color) => {
+    document.body.style.backgroundColor = color;
+    toggle_alert_window("Color Changed");
+  }
 
   return (
     <>
     <div>
-      <NavBar mode={visibility_mode} toggle_visiblity_mode = {toggle_visiblity_mode} toggle_alert_window={toggle_alert_window}/>
+      <NavBar mode={visibility_mode} toggle_visiblity_mode = {toggle_visiblity_mode} toggle_alert_window={toggle_alert_window} change_color_to={change_color_to}/>
       <Alert active={active} close_alert_window={close_alert_window} alert_detail={alert_window_detail}/>
       <div style={style.container}> 
           <Textform heading="Text Application" strong="Start Writing in the Text Area" mode={visibility_mode} toggle_alert_window={toggle_alert_window}/>
