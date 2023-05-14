@@ -3,12 +3,12 @@ import NavBar from './Components/Navbar';
 import Textform from './Components/textform';
 import React , {useState} from 'react';
 import Alert from './Components/Alert';
-import Aboutus from './Aboutus';
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route
-} from "react-router-dom";
+// import Aboutus from './Aboutus';
+// import {
+//   BrowserRouter as Router,
+//   Routes,
+//   Route
+// } from "react-router-dom";
 
 function App() {
   const style = {
@@ -55,20 +55,23 @@ function App() {
 
   return (
     <>
-    <Router>
+    {/* <Router> */}
       <div>
         <NavBar mode={visibility_mode} toggle_visiblity_mode = {toggle_visiblity_mode} toggle_alert_window={toggle_alert_window} change_color_to={change_color_to}/>
         <Alert active={active} close_alert_window={close_alert_window} alert_detail={alert_window_detail}/>
-        <Routes>
+        <div style={style.container}>
+          <Textform heading="Text Application" strong="Start Writing in the Text Area" mode={visibility_mode} toggle_alert_window={toggle_alert_window}/>
+        </div>
+        {/* <Routes>
           <Route path='/about' element={<Aboutus mode={visibility_mode}/>}>
           </Route>
           <Route path='/'
           element={<div style={style.container}><Textform heading="Text Application" strong="Start Writing in the Text Area" mode={visibility_mode} toggle_alert_window={toggle_alert_window}/></div>}
           >
           </Route>
-        </Routes>
+        </Routes> */}
       </div>
-    </Router>
+    {/* </Router> */}
     </>
   );
 }

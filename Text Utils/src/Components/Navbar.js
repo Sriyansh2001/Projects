@@ -1,5 +1,5 @@
 import React , {useState} from 'react';
-import {Link} from "react-router-dom";
+// import {Link} from "react-router-dom";
 
 export default function Navbar(props) {
 
@@ -28,10 +28,10 @@ export default function Navbar(props) {
         </span>
         <span className='list'>
           <b style={{fontSize:"18px"}}>Text Utils</b> &nbsp;
-          <Link to='/' className='item'>Home</Link>
-          <Link to='#' className='item'>Contact</Link>
-          <Link to='#' className='item'>Helpline</Link>
-          <Link to='/about' className='item'>About</Link>
+          <a href='/' className='item'>Home</a>
+          <a href='#' className='item'>Contact</a>
+          <a href='#' className='item'>Helpline</a>
+          <a href='/about' className='item'>About</a>
         </span>
       </nav>
     </div>
