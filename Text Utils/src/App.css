@@ -16,7 +16,7 @@
 }
 
 .switcharea,.switchtextarea{
-  float:left;
+  float:right;
   margin: 15px;
 }
 
@@ -29,7 +29,7 @@
 }
 
 .list{
-  float: right;
+  float: left;
   padding: 15px;
   border-radius: 2px;
   border-color: white;

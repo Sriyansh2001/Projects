@@ -1,7 +1,8 @@
 import React , {useState} from 'react';
+import {Link} from "react-router-dom";
 
 export default function Navbar(props) {
-  
+
   const make_change = () => {
     var val = document.getElementById("select_option").value;
     props.change_color_to(val);
@@ -11,7 +12,7 @@ export default function Navbar(props) {
     <div>
       <nav className='nav'>
         <span className='switchtextarea'>
-          Enable {props.mode} mode
+          Enable {props.mode=="Dark"?"Light":"Dark"} mode
         </span>
         <span className='switcharea'>
           <input type='checkbox' onChange={props.toggle_visiblity_mode} className='switch' id='switch'></input>
@@ -23,13 +24,14 @@ export default function Navbar(props) {
             <option>Red</option>
             <option>Purple</option>
           </select>
-          <button onClick={make_change}>Make Change</button>
+          <button onClick={make_change}>Make Theme</button>
         </span>
         <span className='list'>
-          <a href='#' className='item'>Home</a>
-          <a href='#' className='item'>Contact</a>
-          <a href='#' className='item'>Helpline</a>
-          <a href='#' className='item'>About</a>
+          <b style={{fontSize:"18px"}}>Text Utils</b> &nbsp;
+          <Link to='/' className='item'>Home</Link>
+          <Link to='#' className='item'>Contact</Link>
+          <Link to='#' className='item'>Helpline</Link>
+          <Link to='/about' className='item'>About</Link>
         </span>
       </nav>
     </div>

@@ -88,6 +88,7 @@ export default function Textform(props) {
     const onchangefun = (event) => {
         // console.log("On Change");
         setText(event.target.value);
+        count_length();
     }
 
     // Function use to Recover the cleared text
@@ -132,9 +133,23 @@ export default function Textform(props) {
         props.toggle_alert_window("Text Copied");
     }
 
+    // Count the length of the Text
+    function count_length() {
+        var t = text.split(" ");
+        var count=0;
+        for(var i=0 ; i<t.length ; ++i) {
+            if(t[i]==""){
+                continue;
+            }
+            count+=1;
+        }
+        change_word(count);
+    }
+
     // Text Vairable
     const [text,setText] = useState("");
     const [mistake,recovery_text] = useState("");
+    const [word,change_word] = useState(0);
     // const [dark_mode , change_mode] = useState("Enable Dark Mode");
     // const [user_coloing,user_change_coloring] = useState("black");
 
@@ -169,7 +184,7 @@ export default function Textform(props) {
                 <div className="container2" style={style.contents}>
                     <h1>Details of text area</h1>
                     <p><strong>{text.length} charaters are used</strong></p>
-                    <p><strong>{text.split(" ").length} words are used</strong></p>
+                    <p><strong>{word} words are used</strong></p>
                     <p>{0.008*(text.split(" ").length-1)} minute requied to read</p>
                     <h3>Preview</h3>    
                     <span className="preview_box">{text===""?"Type to Preview":text}</span>

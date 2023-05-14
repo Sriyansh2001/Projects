@@ -1,8 +1,14 @@
 import './App.css';
-import NavBar from './Components/Navbar'
+import NavBar from './Components/Navbar';
 import Textform from './Components/textform';
-import React , {useCallback, useState} from 'react';
+import React , {useState} from 'react';
 import Alert from './Components/Alert';
+import Aboutus from './Aboutus';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from "react-router-dom";
 
 function App() {
   const style = {
@@ -14,14 +20,14 @@ function App() {
   };
   const [visibility_mode,change_visibility_mode] = useState("Light");
   const [active,change_active] = useState(false);
-  const [alert_window_detail,fnc_alert_window_detail] = useState("Dark");
+  const [alert_window_detail,fnc_alert_window_detail] = useState("");
 
   const toggle_alert_window=(msg)=>{ 
     change_active(true);
     fnc_alert_window_detail(msg);
-    // setTimeout(() => {
-    //   close_alert_window();
-    // }, 1500);
+    setTimeout(() => {
+      close_alert_window();
+    }, 1500);
   }
 
   const close_alert_window=()=>{
@@ -49,13 +55,20 @@ function App() {
 
   return (
     <>
-    <div>
-      <NavBar mode={visibility_mode} toggle_visiblity_mode = {toggle_visiblity_mode} toggle_alert_window={toggle_alert_window} change_color_to={change_color_to}/>
-      <Alert active={active} close_alert_window={close_alert_window} alert_detail={alert_window_detail}/>
-      <div style={style.container}> 
-          <Textform heading="Text Application" strong="Start Writing in the Text Area" mode={visibility_mode} toggle_alert_window={toggle_alert_window}/>
+    <Router>
+      <div>
+        <NavBar mode={visibility_mode} toggle_visiblity_mode = {toggle_visiblity_mode} toggle_alert_window={toggle_alert_window} change_color_to={change_color_to}/>
+        <Alert active={active} close_alert_window={close_alert_window} alert_detail={alert_window_detail}/>
+        <Routes>
+          <Route path='/about' element={<Aboutus mode={visibility_mode}/>}>
+          </Route>
+          <Route path='/'
+          element={<div style={style.container}><Textform heading="Text Application" strong="Start Writing in the Text Area" mode={visibility_mode} toggle_alert_window={toggle_alert_window}/></div>}
+          >
+          </Route>
+        </Routes>
       </div>
-    </div>
+    </Router>
     </>
   );
 }
